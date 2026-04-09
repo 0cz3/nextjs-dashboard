@@ -124,5 +124,24 @@ formタグに埋め込んで呼び出し action={deleteInvoiceWithId}など
 フォルダ名を角括弧で囲むことで、動的なルートを作成できる([id][post][slug])
 (動的な値[id]などはコンポーネントから受け取ってhrefのパスに埋め込み /app/ui/invoices/table.tsx, /app/ui/invoices/buttons.tsx参照)
 
-TODO chapter12-（エラーハンドリング、アクセシビリティ、認証、メタデータ追加）
+###  認証
+
+- NextAuth.jsインストール
+  - pnpm i next-auth@beta
+  - OAuth=外部サービスでログイン
+  - Credentials=ID, PASSWORDでログイン
+- アプリケーション用の秘密鍵を生成
+  - Cookieを暗号化し、ユーザーセッションのセキュリティを確保
+  - openssl rand -base64 32
+  - .envファイル AUTH_SECRET=your-secret-key
+  - 本番環境で機能させる場合はVercelの環境変数も追加
+    - http://vercel.com/docs/environment-variables
+- パスワード暗号化
+  - bcryptでハッシュ値に変換して保存、照合
+- パスワード
+  - メールアドレス:user@nextmail.com
+  - パスワード：123456
+
+
+TODO chapter12-（エラーハンドリング、アクセシビリティ、メタデータ追加）
 
